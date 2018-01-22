@@ -32,7 +32,7 @@ public class SpiralArray {
                 .boxed()
                 .map(elementMap::get)
                 .map(SpiralElement::getPrevElement)
-                .map(this::getCurrentSpiralElement)
+                .map(this::makeCurrentElement)
                 .forEach(this::putCurrentElementToMap);
 
         elementMap.remove(START_NUMBER + size);
@@ -43,7 +43,7 @@ public class SpiralArray {
         elementMap.put(current.getNum() + 1, new SpiralElement(current));
     }
 
-    private SpiralElement getCurrentSpiralElement(Optional<SpiralElement> prevOptional) {
+    private SpiralElement makeCurrentElement(Optional<SpiralElement> prevOptional) {
         if (!prevOptional.isPresent()) {
             return elementMap.get(START_NUMBER);
         }
